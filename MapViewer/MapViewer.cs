@@ -15,7 +15,7 @@ using UnityEngine.SceneManagement;
 
 namespace be.vanderlei.arne.MapViewer
 {
-    [BepInDependency("com.bepis.r2api")] 
+    [BepInDependency("com.bepis.r2api")]
     [BepInPlugin("be.vanderlei.arne.MapViewer", "MapViewer", "1.0")]
     public class ExamplePlugin : BaseUnityPlugin
     {
@@ -29,7 +29,7 @@ namespace be.vanderlei.arne.MapViewer
             for (int i = 0; i <= 16; i++)
             {
 
-                AsyncOperation ope =  SceneManager.LoadSceneAsync(i,LoadSceneMode.Single);
+                AsyncOperation ope = SceneManager.LoadSceneAsync(i, LoadSceneMode.Single);
 
                 yield return new WaitUntil(() => ope.isDone);
 
@@ -49,7 +49,7 @@ namespace be.vanderlei.arne.MapViewer
                     objjson.Add(go);
                 }
 
-                File.WriteAllText(outpath + "map" + i + ".json", JsonConvert.SerializeObject(objjson,Formatting.Indented));
+                File.WriteAllText(outpath + "map" + i + ".json", JsonConvert.SerializeObject(objjson, Formatting.Indented));
             }
             yield return null;
 
@@ -75,7 +75,7 @@ namespace be.vanderlei.arne.MapViewer
                     File.WriteAllText(outpath + "classes/" + type.Name + ".cs", output);
                 }
             }
-        } 
+        }
 
         public static List<jsonComponent> OutputComponents(Component[] components)
         {
@@ -85,10 +85,10 @@ namespace be.vanderlei.arne.MapViewer
             {
 
                 Type type = components[i].GetType();
-                
+
                 Dictionary<string, object> properties = new Dictionary<string, object>();
 
-                if(type.FullName == "UnityEngine.Transform")
+                if (type.FullName == "UnityEngine.Transform")
                 {
                     Transform trans = (Transform)components[i];
                     properties.Add("Pos", trans.position.ToString());
@@ -96,7 +96,7 @@ namespace be.vanderlei.arne.MapViewer
                     properties.Add("scl", trans.localScale.ToString());
                 }
                 else
-                { 
+                {
                     foreach (FieldInfo field in type.GetFields())
                     {
                         object check = field.GetValue(components[i]);
@@ -121,13 +121,13 @@ namespace be.vanderlei.arne.MapViewer
                 jsonComponent definition = new jsonComponent
                 {
                     Name = type.ToString(),
-                    properties = properties 
+                    properties = properties
                 };
                 componentsjson.Add(definition);
             }
             return componentsjson;
         }
-        
+
         public static List<jsonGameObject> GetChildren(Transform transform)
         {
             List<jsonGameObject> gameObjects = new List<jsonGameObject>();
@@ -183,6 +183,25 @@ namespace be.vanderlei.arne.MapViewer
         };
     }
 
+
+    public static class Utils{
+        public static T GetInstanceField<T>(this object instance, string fieldName)
+        {
+            BindingFlags bindFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic
+                | BindingFlags.Static;
+            FieldInfo field = instance.GetType().GetField(fieldName, bindFlags);
+            return (T)field.GetValue(instance);
+        }
+
+        public static void SetInstanceField<T>(this object instance, string fieldName, T value)
+        {
+            BindingFlags bindFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic
+                | BindingFlags.Static;
+            FieldInfo field = instance.GetType().GetField(fieldName, bindFlags);
+            field.SetValue(instance, value);
+        }
+    }
+
     public struct jsonGameObject
     {
         public string Name;
@@ -195,4 +214,5 @@ namespace be.vanderlei.arne.MapViewer
         public string Name;
         public Dictionary<string,object> properties;
     }
+
 }
