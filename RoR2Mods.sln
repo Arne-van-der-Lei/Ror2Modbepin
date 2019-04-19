@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Prefabs", "ExamplePlugin\Prefabs.csproj", "{70CF3F79-167D-40C3-A489-16E1E1D902C1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Talox", "Talox\Talox.csproj", "{38C358E8-D240-4FC2-AF82-2C626BEDB6BE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MapViewer", "MapViewer\MapViewer.csproj", "{8EB6C407-F1D7-4C79-A622-5AF6C4CDC63E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{70CF3F79-167D-40C3-A489-16E1E1D902C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70CF3F79-167D-40C3-A489-16E1E1D902C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70CF3F79-167D-40C3-A489-16E1E1D902C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70CF3F79-167D-40C3-A489-16E1E1D902C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38C358E8-D240-4FC2-AF82-2C626BEDB6BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38C358E8-D240-4FC2-AF82-2C626BEDB6BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38C358E8-D240-4FC2-AF82-2C626BEDB6BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38C358E8-D240-4FC2-AF82-2C626BEDB6BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EB6C407-F1D7-4C79-A622-5AF6C4CDC63E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EB6C407-F1D7-4C79-A622-5AF6C4CDC63E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EB6C407-F1D7-4C79-A622-5AF6C4CDC63E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EB6C407-F1D7-4C79-A622-5AF6C4CDC63E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3EF1BEF8-C0CD-4395-8F23-8863930147AB}
+	EndGlobalSection
+EndGlobal
